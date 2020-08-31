@@ -5,18 +5,29 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 public class Data {
+
+    private static Data single_instance = null;
+
     BlockingQueue dataStorage;
 
-    public Data() {
+    private Data() {
         dataStorage = new ArrayBlockingQueue(1024);
     }
 
+    // static method to create instance of Singleton class
+    public static Data getInstance()
+    {
+        if (single_instance == null)
+            single_instance = new Data();
 
-    public void addData(String message) {
+        return single_instance;
+    }
+
+    public void addMessage(String message) {
         dataStorage.add(message);
     }
 
-    public String getData() {
+    public String getMessage() {
         try {
             return (String) dataStorage.take();
         } catch (InterruptedException e) {

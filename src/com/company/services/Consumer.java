@@ -15,10 +15,20 @@ public class Consumer implements  Runnable{
     @Override
     public void run() {
 
-
         while (true) {
 
-            System.out.print(data.getData());
+            String message= data.getMessage();
+            if (data!=null) {
+                System.out.print(data);
+            }else {
+                System.out.print("No messages");
+            }
+
+            try {
+                TimeUnit.MILLISECONDS.sleep(500);
+            } catch (InterruptedException e) {
+
+            }
         }
     }
 }

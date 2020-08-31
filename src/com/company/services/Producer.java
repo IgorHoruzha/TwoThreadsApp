@@ -19,7 +19,7 @@ public class Producer implements  Runnable {
         while (true) {
             try {
 
-                data.addData(""+i++);
+                data.addMessage(""+i++);
                 TimeUnit.SECONDS.sleep(1);
             } catch (InterruptedException e) {
                 e.printStackTrace();
