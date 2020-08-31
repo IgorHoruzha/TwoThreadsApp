@@ -4,7 +4,7 @@ import com.company.data.Data;
 
 import java.util.concurrent.TimeUnit;
 
-public class Consumer extends Thread {
+public class Consumer implements Runnable {
 
     private Data data;
 
@@ -16,19 +16,8 @@ public class Consumer extends Thread {
     public void run() {
 
         while (true) {
-
-            String message= data.getMessage();
-            if (data!=null) {
-                System.out.print(message);
-            }else {
-                System.out.print("No messages");
-            }
-
-            try {
-                TimeUnit.MILLISECONDS.sleep(500);
-            } catch (InterruptedException e) {
-
-            }
+            String message = data.getMessage();
+            System.out.print(message);
         }
     }
 }

@@ -16,8 +16,11 @@ public class Main {
         Consumer consumer= new Consumer(singletonData);
         Producer producer= new Producer(singletonData);
 
-        consumer.run();
-        producer.run();
+        Thread consumerThread = new Thread(consumer,"consumerThread");
+        consumerThread.start();
+
+        Thread producerThread = new Thread(producer,"producerThread");
+    //    producerThread.start();
 
         while (true){
 

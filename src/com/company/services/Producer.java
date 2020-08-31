@@ -4,7 +4,7 @@ import com.company.data.Data;
 
 import java.util.concurrent.TimeUnit;
 
-public class Producer extends Thread {
+public class Producer implements Runnable {
 
     private Data data;
 
@@ -12,14 +12,13 @@ public class Producer extends Thread {
         this.data = data;
     }
 
-
     @Override
     public void run() {
-        int i=0;
+        int i = 0;
         while (true) {
             try {
 
-                data.addMessage(""+i++);
+                data.addMessage("" + i++);
                 TimeUnit.SECONDS.sleep(1);
             } catch (InterruptedException e) {
                 e.printStackTrace();
