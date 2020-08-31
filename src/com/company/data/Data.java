@@ -29,7 +29,6 @@ public class Data {
 
     public String getMessage() {
         try {
-
             return dataStorage.take();
         } catch (InterruptedException e) {
             return null;

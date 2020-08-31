@@ -20,7 +20,7 @@ public class Main {
         consumerThread.start();
 
         Thread producerThread = new Thread(producer,"producerThread");
-    //    producerThread.start();
+        producerThread.start();
 
         while (true){
 
