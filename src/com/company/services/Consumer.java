@@ -4,7 +4,7 @@ import com.company.data.Data;
 
 import java.util.concurrent.TimeUnit;
 
-public class Consumer implements  Runnable{
+public class Consumer extends Thread {
 
     private Data data;
 
@@ -19,7 +19,7 @@ public class Consumer implements  Runnable{
 
             String message= data.getMessage();
             if (data!=null) {
-                System.out.print(data);
+                System.out.print(message);
             }else {
                 System.out.print("No messages");
             }

@@ -4,7 +4,7 @@ import com.company.data.Data;
 
 import java.util.concurrent.TimeUnit;
 
-public class Producer implements  Runnable {
+public class Producer extends Thread {
 
     private Data data;
 
