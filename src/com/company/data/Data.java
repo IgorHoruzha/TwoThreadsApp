@@ -8,10 +8,10 @@ public class Data {
 
     private static Data single_instance = null;
 
-    BlockingQueue dataStorage;
+    BlockingQueue<String> dataStorage;
 
     private Data() {
-        dataStorage = new ArrayBlockingQueue(1024);
+        dataStorage = new ArrayBlockingQueue<String>(1024);
     }
 
     // static method to create instance of Singleton class
@@ -29,7 +29,8 @@ public class Data {
 
     public String getMessage() {
         try {
-            return (String) dataStorage.take();
+
+            return dataStorage.take();
         } catch (InterruptedException e) {
             return null;
         }
