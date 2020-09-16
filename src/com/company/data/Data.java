@@ -1,22 +1,19 @@
 package com.company.data;
-
-import java.util.concurrent.ArrayBlockingQueue;
-
-import java.util.concurrent.BlockingQueue;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Data {
 
     private static Data single_instance = null;
 
-    BlockingQueue<String> dataStorage;
+    Queue<String> dataStorage;
 
     private Data() {
-        dataStorage = new ArrayBlockingQueue<String>(1024);
+        dataStorage = new LinkedList<String>();
     }
 
     // static method to create instance of Singleton class
-    public static Data getInstance()
-    {
+    public static Data getInstance() {
         if (single_instance == null)
             single_instance = new Data();
 
@@ -24,14 +21,14 @@ public class Data {
     }
 
     public void addMessage(String message) {
-        dataStorage.add(message);
+        synchronized (this) {
+            dataStorage.add(message);
+        }
     }
 
     public String getMessage() {
-        try {
-            return dataStorage.take();
-        } catch (InterruptedException e) {
-            return null;
+        synchronized (this) {
+            return dataStorage.poll();
         }
     }
 }

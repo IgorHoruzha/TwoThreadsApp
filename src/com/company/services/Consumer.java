@@ -17,7 +17,10 @@ public class Consumer implements Runnable {
 
         while (true) {
             String message = data.getMessage();
-            System.out.print(message);
+            if (message != null) {
+                System.out.print(message);
+            }
+
         }
     }
 }

@@ -9,20 +9,18 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) {
+        Data singletonData = Data.getInstance();
 
+        Consumer consumer = new Consumer(singletonData);
+        Producer producer = new Producer(singletonData);
 
-        Data singletonData= Data.getInstance();
-
-        Consumer consumer= new Consumer(singletonData);
-        Producer producer= new Producer(singletonData);
-
-        Thread consumerThread = new Thread(consumer,"consumerThread");
+        Thread consumerThread = new Thread(consumer, "consumerThread");
         consumerThread.start();
 
-        Thread producerThread = new Thread(producer,"producerThread");
+        Thread producerThread = new Thread(producer, "producerThread");
         producerThread.start();
 
-        while (true){
+        while (true) {
 
             try {
                 System.in.read();
@@ -30,9 +28,6 @@ public class Main {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
-
         }
     }
 }
